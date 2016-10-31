@@ -1,0 +1,27 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+GET     /test                       controllers.HomeController.test
+
+GET     /qnrs/list                  controllers.HomeController.loadQuestionnaires
+GET     /qnrs/get/:id               controllers.HomeController.loadQuestionnaire(id)
+GET     /qnrs/questions/:id         controllers.HomeController.loadQnrQuestions(id)
+GET     /fdps/list                  controllers.HomeController.loadFdps
+GET     /fdps/metadata/:id          controllers.HomeController.fdpMetadata(id)
+
+# API
+GET     /api/qnrs/list                  controllers.DSController.loadQuestionnaires
+GET     /api/qnrs/get/:id               controllers.DSController.loadQuestionnaire(id)
+GET     /api/qnrs/questions/:id         controllers.DSController.loadQnrQuestions(id)
+GET     /api/fdps/list                  controllers.DSController.loadFdps
+GET     /api/fdps/metadata/:id          controllers.DSController.fdpMetadata(id)
+GET     /api/surveys                    controllers.DSController.surveyList
+GET     /api/refPeriods                 controllers.DSController.refPeriodList
+GET     /api/qnrs/sub/:survey/:ref      controllers.DSController.qnrSubList(survey, ref)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg contentScriptType="text/ecmascript" width="100" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" contentStyleType="text/css" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" version="1.0" >
+	<defs />
+	<circle r="43" id="circle" style="fill:#ff0000;stroke-width:2.0;stroke:#666666;" cx="50" cy="50" />
+	<line y2="25.0" x1="25.0" style="stroke:#ffffff;stroke-width:8.0;" x2="75.0" y1="75.0" />
+	<line y2="25.0" x1="75.0" style="stroke:#ffffff;fill:#ffffff;stroke-width:8.0;" x2="25.0" y1="75.0" />
+</svg>

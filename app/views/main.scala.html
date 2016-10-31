@@ -1,0 +1,64 @@
+@*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ *@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @* Here's where we render the page title `String`. *@
+        <title>@title</title>
+
+        <script src='@routes.Assets.versioned("javascripts/jquery-1.11.3.min.js")' type='text/javascript'></script>
+        <link type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <script src="@routes.Assets.versioned("javascripts/http.js")" type="text/javascript"></script>
+        <script src='@routes.Assets.versioned("javascripts/common.js")' type='text/javascript'></script>
+    </head>
+    <body>
+      <h2>Welcome to the DataSources app</h2>
+
+      <div id="errorModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background: pink;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" style="color: red;">Error</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="errorText" style="color: red;">Some text in the modal.</p>
+                </div>
+                <div class="modal-footer" style="background: pink;">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="waitModal" class="modal fade" role="dialog" >
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p id="waitText">Some text in the modal.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+        @* And here's where we render the `Html` object containing
+         * the page content. *@
+        @content
+    </body>
+</html>

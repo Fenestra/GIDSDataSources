@@ -1,0 +1,55 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(message: String)
+
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Welcome to DataSources") {
+
+
+<DIV>
+    Ad-hoc Tests:
+    <ul class="nav nav-pills">
+        <li id='3'> <a href='#' onclick='loadURL("/test")'>Test</a> </li>
+        <li id='4'> <a href='#' onclick='loadURL("/qnrs/list")'>Load Questionnaires</a> </li>
+        <li id='5'> <input id="qnrID" type="text" value="70806D3E-A20C-FBC7-E0F2-BE201C000504">
+            <a href='#' onclick='loadQnr()'>Load Questionnaire for ID</a>
+        <a href='#' onclick='loadQnrQuestions()'>Load QnrQuestions</a> </li>
+        <li id='6'> <a href='#' onclick='loadURL("/fdps/list")'>Load FDPs</a> </li>
+        <li id='7'> <a href='#' onclick='loadURL("/fdps/metadata/2F98CE48-AA9D-2C0F-E042-AC19C9004537")'>Load FDP metadata</a> </li>
+    </ul>
+    <br>
+    API:
+    <ul>
+        <li > <a href='#' title="/api/qnrs/list" onclick='apiTest("/api/qnrs/list")'>LoadAllQnrs</a> </li>
+        <li > <a href='#' title="/api/qnrs/get/70806D3E-A20C-FBC7-E0F2-BE201C000504" onclick='apiTest("/api/qnrs/get/70806D3E-A20C-FBC7-E0F2-BE201C000504")'>LoadQnr</a> </li>
+        <li > <a href='#' title="/api/qnrs/questions/70806D3E-A20C-FBC7-E0F2-BE201C000504" onclick='apiTest("/api/qnrs/questions/70806D3E-A20C-FBC7-E0F2-BE201C000504")'>LoadQnrQuestions</a> </li>
+        <li > <a href='#' title="/api/fdps/list" onclick='apiTest("/api/fdps/list")'>LoadFDPs</a> </li>
+        <li > <a href='#' title="/api/fdps/metadata/2F98CE48-AA9D-2C0F-E042-AC19C9004537" onclick='apiTest("/api/fdps/metadata/2F98CE48-AA9D-2C0F-E042-AC19C9004537")'>LoadFDPMetadata</a> </li>
+        <li > <a href='#' title="/api/surveys" onclick='apiTest("/api/surveys")'>LoadSurveys</a> </li>
+        <li > <a href='#' title="/api/refPeriods" onclick='apiTest("/api/refPeriods")'>LoadRefPeriods</a> </li>
+        <li > <a href='#' title="/api/qnrs/sub/COSA/2015 SURVEY" onclick='apiTest("/api/qnrs/sub/COSA/2015 SURVEY")'>LoadQnrsForSurveyRefPeriod</a> </li>
+    </ul>
+</DIV>
+
+
+    @*
+     * Get an `Html` object by calling the built-in Play welcome
+     * template and passing a `String` message.
+play20.welcome(message, style = "Scala")
+     *@
+<hr/>
+
+<div class="section">
+
+    <div class="section group">
+        <textarea id="resulttext" class="textmsg" rows="25" style="width:100%">@message</textarea>
+    </div>
+
+</div>
+}
