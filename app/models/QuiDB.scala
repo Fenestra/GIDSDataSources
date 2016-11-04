@@ -47,7 +47,7 @@ case class QuiDB() {
     val statement =
       """
         select QNR_id, REF_PERIOD, FORM_NUMBER, FORM_DISPLAY_NUMBER, TITLE, SUB_TITLE, STATUS
-        from QUESTIONNAIRES order by REF_PERIOD, FORM_NUMBER
+        from questionnaires order by REF_PERIOD, FORM_NUMBER
       """
     DB.withConnection { implicit connection =>
       val objs : List[Questionnaire] = {
@@ -63,7 +63,7 @@ case class QuiDB() {
     val statement =
       """
         select QNR_id, REF_PERIOD, FORM_NUMBER, FORM_DISPLAY_NUMBER, TITLE, SUB_TITLE, STATUS
-        from QUESTIONNAIRES
+        from questionnaires
         where ref_period = {refPeriod} and survey = {survey}
         order by FORM_NUMBER
       """
