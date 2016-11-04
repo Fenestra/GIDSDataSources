@@ -28,11 +28,11 @@ function showModalWait(msg) {
 }
 
 function loadQnr() {
-  loadURL("/qnrs/get/"+document.getElementById("qnrID").value);
+  loadURL("/gidsapi/qnrs/get/"+document.getElementById("qnrID").value);
 }
 
 function loadQnrQuestions() {
-  loadURL("/qnrs/questions/"+document.getElementById("qnrID").value);
+  loadURL("/gidsapi/qnrs/questions/"+document.getElementById("qnrID").value);
 }
 
 function loadURL(url) {
