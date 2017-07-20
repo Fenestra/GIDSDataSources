@@ -1,16 +1,7 @@
 logs
 project/project
 project/target
-target/coffeescript
-target/jshint
-target/less
-target/*SNAPSHOT-assets.jar
-target/resolution-cache
-target/scala-2.11
-target/specs2-reports
-target/streams
-target/test-reports
-target/web
+target
 tmp
 .history
 dist
@@ -24,3 +15,4 @@ dist
 /.settings
 *.db
 *.~*
+*.sfo

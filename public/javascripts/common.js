@@ -59,7 +59,6 @@ function apiTest(url) {
 //  document.getElementById("hiddenlink").click();
 }
 
-
 /*
 function resetDBFunction(resp) {
   closeWaitPage();

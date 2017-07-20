@@ -1,0 +1,21 @@
+@*
+* This template takes a single argument, a String containing a
+* message to display.
+*@
+@(imageData: String)
+
+@*
+* Call the `main` template with two arguments. The first
+* argument is a `String` with the title of the page, the second
+* argument is an `Html` object containing the body of the page.
+*@
+@main("Documents", "Documents Viewer") {
+
+<br>
+
+<object type="image/svg+xml" data='@routes.Assets.versioned(imageData)'>
+    Your browser does not support SVG
+</object>
+
+
+}

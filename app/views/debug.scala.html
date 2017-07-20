@@ -1,0 +1,9 @@
+@(debugmsg : String)(implicit lang: Lang)
+
+<footer style="padding-left:4px;background:yellow">
+    lang = @lang.code,
+    date = @(new java.util.Date().format("yyyy-MM-dd HH:mm"))
+    <br>
+    <!-- live message: session.get("debugmsg")<br-->
+    @debugmsg
+</footer>

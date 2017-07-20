@@ -3,7 +3,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /gidsapi                    controllers.HomeController.index
+GET     /gidsapi                            controllers.HomeController.index
 GET     /gidsapi/test                       controllers.HomeController.test
 
 GET     /gidsapi/qnrs/list                  controllers.HomeController.loadQuestionnaires
@@ -12,16 +12,22 @@ GET     /gidsapi/qnrs/questions/:id         controllers.HomeController.loadQnrQu
 GET     /gidsapi/fdps/list                  controllers.HomeController.loadFdps
 GET     /gidsapi/fdps/metadata/:id          controllers.HomeController.fdpMetadata(id)
 
+# Documents
+GET     /docPage                            controllers.DocController.documentHome
+GET     /gidsapi/docs/render/:id            controllers.DSController.renderDocument(id)
+
 # API
 GET     /api/qnrs/list                  controllers.DSController.loadQuestionnaires
 GET     /api/qnrs/get/:id               controllers.DSController.loadQuestionnaire(id)
 GET     /api/qnrs/questions/:id         controllers.DSController.loadQnrQuestions(id)
+GET     /api/qnrs/questionitems/:id     controllers.DSController.loadQuestionItems(id)
 GET     /api/fdps/list                  controllers.DSController.loadFdps
 GET     /api/fdps/metadata/:id          controllers.DSController.fdpMetadata(id)
 GET     /api/surveys                    controllers.DSController.surveyList
 GET     /api/refPeriods                 controllers.DSController.refPeriodList
 GET     /api/qnrs/sub/:survey/:ref      controllers.DSController.qnrSubList(survey, ref)
-
+GET     /api/docs/refPeriodDivisions    controllers.DSController.refPeriodDivisions
+GET     /api/docs/:refdiv               controllers.DSController.documentsByRefDiv(refdiv)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /gidsapi/assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

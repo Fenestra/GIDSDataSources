@@ -1,6 +1,8 @@
 package controllers
 
 import javax.inject._
+import com.westat.CustomContent
+import com.westat.sfo.SFOReader
 import models._
 import play.api._
 import play.api.mvc._
@@ -34,6 +36,14 @@ class DSController @Inject() extends Controller {
     )
   }
 
+  def loadQuestionItems(id : String) = Action.async {
+        println(s"loadQuestionItems for $id")
+    CustomContent.loadTest
+    QuestionItem.questionItemsAsJson(id).map(info =>
+      Ok(info)
+    )
+  }
+
   def loadFdps = Action.async {
 //    println("loadFdps")
     FdpInfo.fdpListAsString.map(info =>
@@ -63,6 +73,22 @@ class DSController @Inject() extends Controller {
     Questionnaire.qnrListForSurveyRef(survey, refPeriod).map(info =>
       Ok(info)
     )
+  }
+
+  def refPeriodDivisions = Action.async {
+    // array of id:123..., refPeriod:"2002 CENSUS", division:"General"
+    RefPeriodDivision.refPeriodDivisionsAsString.map(info => Ok(info))
+  }
+
+  def documentsByRefDiv(refdiv : String) = Action.async {
+    // array of id:123..., refPeriod:"2002 CENSUS", division:"General"
+    Document.byRefDivAsString(refdiv).map(info => Ok(info))
+  }
+
+  def renderDocument(id : String) = Action.async {
+//    Document.renderSfo(id).map(info => Ok(views.html.svg("/gidsapi/assets/images/"+info)))
+    Document.renderSfo(id).map(info => Ok("/gidsapi/assets/images/"+info))
+ //   SFOReader(Document.sfo(id)).readAll.map(info => Ok(info))
   }
 
 }
