@@ -14,6 +14,7 @@ GET     /gidsapi/fdps/metadata/:id          controllers.HomeController.fdpMetada
 
 # Documents
 GET     /docPage                            controllers.DocController.documentHome
+GET     /showDoc/:id                        controllers.DocController.showDocument(id)
 GET     /gidsapi/docs/render/:id            controllers.DSController.renderDocument(id)
 
 # API

@@ -10,17 +10,18 @@ function docSelected(aTr) {
     $(aTr).parent().children().removeClass("info");
     $(aTr).addClass("info");
 }
-
+/*
 function renderDocFunction(resp) {
   closeWaitPage();
   console.log("render processed "+resp);
   window.location.assign(resp);
 }
-
+*/
 function renderDoc() {
   console.log("renderDoc called for "+lastDocID)
   showWaitPage("Please wait for the server to respond...");
-  getFromHttp("GET", "/gidsapi/docs/render/"+lastDocID, renderDocFunction);
+//  getFromHttp("GET", "/gidsapi/docs/render/"+lastDocID, renderDocFunction);
+  window.location.assign("showDoc/"+lastDocID);
 }
 
 
@@ -44,7 +45,6 @@ function docsByRefDivFunction(resp) {
 }
 
 function refSelected(ref) {
-  document.getElementById("doctext").textContent = ref+" was selected";
   showWaitPage("Please wait for the server to respond...");
   getFromHttp("GET", "/api/docs/"+ref, docsByRefDivFunction);
   console.log("selected "+ref);

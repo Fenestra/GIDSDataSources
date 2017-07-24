@@ -2,18 +2,20 @@
 * This template takes a single argument, a String containing a
 * message to display.
 *@
-@(imageData: String)
+@(message: String, imageData: String)
 
 @*
 * Call the `main` template with two arguments. The first
 * argument is a `String` with the title of the page, the second
 * argument is an `Html` object containing the body of the page.
 *@
-@main("Documents", "Documents Viewer") {
+@main("Documents", "Show rendered Document") {
 
 <br>
-
-<object type="image/svg+xml" data='@routes.Assets.versioned(imageData)'>
+<a href="/docPage"><button class="btn-primary">< Back to Documents page</button></a>
+<br>
+<hr/>
+<object type="image/svg+xml" data='@routes.Assets.versioned("images/"+imageData)'>
     Your browser does not support SVG
 </object>
 

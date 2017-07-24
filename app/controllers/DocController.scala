@@ -25,11 +25,12 @@ class DocController @Inject() extends Controller {
    // val refList = List(RefDiv("1", "2012 SURVEY - General"), RefDiv("2", "2012 SURVEY - SSD"), RefDiv("3", "2013 SURVEY - General"))
     Ok(views.html.documentHome("Documents", RefPeriodDivision.refPeriodDivisionsList))
   }
-/*
-  def renderDocument(id : String) = Action.async {
-    // val refList = List(RefDiv("1", "2012 SURVEY - General"), RefDiv("2", "2012 SURVEY - SSD"), RefDiv("3", "2013 SURVEY - General"))
-    Ok("SFOReaderviews.html.documentHome(Documents, RefPeriodDivision.refPeriodDivisionsList)")
+
+  def showDocument(id : String) = Action.async {
+    Document.renderSfo(id).map(info => Ok(views.html.svg("Documents", info)))
   }
+
+/*
   *
     def test = Action.async {
       var cust = Customer("Lee", "hey", "9/28/2016", 1)

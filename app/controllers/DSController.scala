@@ -86,9 +86,7 @@ class DSController @Inject() extends Controller {
   }
 
   def renderDocument(id : String) = Action.async {
-//    Document.renderSfo(id).map(info => Ok(views.html.svg("/gidsapi/assets/images/"+info)))
     Document.renderSfo(id).map(info => Ok("/gidsapi/assets/images/"+info))
- //   SFOReader(Document.sfo(id)).readAll.map(info => Ok(info))
   }
 
 }
