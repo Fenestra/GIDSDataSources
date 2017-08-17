@@ -2,7 +2,7 @@
 * This template takes a single argument, a String containing a
 * message to display.
 *@
-@(message: String, imageData: String)
+@(message: String, imageData: List[String])
 
 @*
 * Call the `main` template with two arguments. The first
@@ -11,13 +11,54 @@
 *@
 @main("Documents", "Show rendered Document") {
 
+
 <br>
-<a href="/docPage"><button class="btn-primary">< Back to Documents page</button></a>
+
+<div height="30">
+    <a href="/docPage"><button class="btn-primary"> Back to Documents page</button></a>
+    Document pages:
+    <ul id="docpages" class="pagination">
+    <!--a href="#" onclick='pageNav("test.svg")'>info</a-->
+    @for(num <- 0 until imageData.length) {
+        @if(num == 0) {
+          <li id="@num"><a href="#" onclick='pageNav("test.svg")'>Job info</a></li>
+         } else {
+          <li id="@num" ><a href="#" onclick='pageNav("@imageData(num)")'>@num</a></li>
+         }
+        }
+        <!--li class="active"><a href="#">2</a></li-->
+    </ul>
+</div>
 <br>
+
 <hr/>
-<object type="image/svg+xml" data='@routes.Assets.versioned("images/"+imageData)'>
-    Your browser does not support SVG
-</object>
+<div id="svg">
+    <object id="image-obj" type="image/svg+xml" data='@routes.Assets.versioned("/images/"+imageData(0))'>
+        Your browser does not support SVG
+    </object>
+</div>
 
 
+<script>
+var lastInd = "0";
+var urlList = []; //@imageData;
+  //  @for(num <- 0 until imageData.length) {urlList.push(@imageData(num));}
+
+function addUrl(somedata) {
+  urlList.push(somedata);
+}
+
+function pageNav(url) {
+/*  var ind = urlList.indexOf(url);
+  console.log("pageNav index is "+ind);
+  document.getElementById(lastInd).class = "none";
+  lastInd = ind.toString;
+  document.getElementById(lastInd).class = "active";
+*/
+  console.log("pageNav got url of "+url);
+  var filename = "/gidsapi/assets/images/" + url;
+  document.getElementById("svg").innerHTML = "<object type='image/svg+xml' data='" +filename + "' >    Your browser does not support SVG  </object>";
+};
+
+</script>
 }

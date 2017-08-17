@@ -2,7 +2,7 @@ package models
 
 import java.io.{ByteArrayInputStream, ByteArrayOutputStream, FileOutputStream}
 
-import com.westat.sfo.SFOReader
+import com.westat.sfo.{SFOReader, ElementCounter}
 import com.westat.{FileCache, StringUtilities}
 import play.api.Logger
 import play.api.libs.json.Json
@@ -340,7 +340,7 @@ object Document {
   implicit val documentReads = Json.reads[Document]
   implicit val documentWrites = Json.writes[Document]
   private val docCache = FileCache(".", "sfo")
-
+  private val counter = ElementCounter()
 
   def byRefDiv(refPeriod : String, division : String) : List[Document] = {
     QuiDB().docsByRefDiv(refPeriod, division)
@@ -364,12 +364,16 @@ object Document {
     StringUtilities.decodeAndExpandByteArray( result )
   }
 
-  def renderSfo(id : String) : Future[String] = {
+  def renderSfo(id : String) : Future[List[String]] = {
     val sfoText = sfo(id)
-    if (sfoText.length < 100)
-      return Future(sfoText)
-//    SFOReader(sfoText).readAll
-    SFOReader(sfoText).writeSVG(id)
+// this is from when it we cached SFO
+//    if (sfoText.length < 100)
+//      return Future(sfoText)
+
+    val reader = SFOReader(sfoText)
+    reader.readAll
+    println(reader.readChildren(counter))
+    reader.writeSVGs(id)
   }
   /*
     make another html paqe with list of refs and divisions
