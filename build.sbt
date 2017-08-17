@@ -7,7 +7,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 scalaVersion := "2.11.7"
 
 //unmanagedSourceDirectories in Compile += file("/home/lee/PlayProjects/CommonWestat")
-unmanagedSourceDirectories in Compile += file("c:/sandbox/CommonWestat")
+//unmanagedSourceDirectories in Compile += file("c:/sandbox/CommonWestat")
+unmanagedSourceDirectories in Compile += file("/www/development/CommonWestat")
 
 libraryDependencies ++= Seq(
   jdbc,
