@@ -3,7 +3,6 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                               controllers.HomeController.index
 GET     /gidsapi                        controllers.HomeController.index
 GET     /gidsapi/test                   controllers.HomeController.test
 GET     /echo/:txt                      controllers.HomeController.echo(txt)
