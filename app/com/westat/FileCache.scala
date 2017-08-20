@@ -2,7 +2,6 @@ package com.westat
 
 import java.io._
 import scala.io.Source
-import com.westat.StringUtilities
 
 // Created by lee on 6/19/17.
 

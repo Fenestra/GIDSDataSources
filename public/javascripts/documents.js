@@ -21,7 +21,7 @@ function renderDoc() {
   console.log("renderDoc called for "+lastDocID)
   showWaitPage("Please wait for the server to respond...");
 //  getFromHttp("GET", "/gidsapi/docs/render/"+lastDocID, renderDocFunction);
-  window.location.assign("showDoc/"+lastDocID);
+  window.location.assign("/gidsapi/showDoc/"+lastDocID);
 }
 
 
@@ -46,7 +46,7 @@ function docsByRefDivFunction(resp) {
 
 function refSelected(ref) {
   showWaitPage("Please wait for the server to respond...");
-  getFromHttp("GET", "/api/docs/"+ref, docsByRefDivFunction);
+  getFromHttp("GET", "/gidsapi/docs/"+ref, docsByRefDivFunction);
   console.log("selected "+ref);
 }
 

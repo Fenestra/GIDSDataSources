@@ -1,5 +1,6 @@
 package controllers
 
+import java.io.{InputStreamReader, BufferedReader, IOException}
 import javax.inject._
 import models._
 import play.api._
@@ -33,6 +34,35 @@ class HomeController @Inject() extends Controller {
     Ok(views.html.index("Cust is updated to Something "+cust+"\nCustUnder is updated to Nothing "
       +custUnder+"\nCust2 is updated to Meininger (this is the only one that should be changed) "+cust2+"\n" + info))
     )
+  }
+
+  def echo(text : String) = Action {
+    println("Controller.echo called "+text)
+    var result = text
+    /*
+    try {
+   //     Runtime.getRuntime().exec("HostProcessor " + text)
+   //   Runtime.getRuntime().exec("c:/devtools/fop/trunk/fop.bat "+command+" "+parameter);
+      val data = "eJxzZGBgmMDIwMAGpIMZHBl8GQIYfBhcGXiB/NC8zLLUomIFnxAFU9Nnz54x2DAgAXYgVnY1A0EAggELZw=="
+      val pb = new ProcessBuilder("RotatedTextExe", data, text, "ignore me")
+      pb.redirectErrorStream(true)
+      val p = pb.start()
+      p.waitFor()
+      val br = new BufferedReader(new InputStreamReader(p.getInputStream))
+      var line = ""
+      val sb = new StringBuilder
+      while ( line != null) {
+        sb.append(line+"\n")
+        line = br.readLine()
+      }
+      result = sb.toString
+    }
+    catch {
+      case ex : Exception =>
+         println("Error calling HostProcessor.exe "+ ex.getMessage)
+    }
+    */
+    Ok(views.html.index(result))
   }
 
   def loadQuestionnaires = Action.async {
