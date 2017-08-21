@@ -34,3 +34,4 @@ GET     /api/docs/refPeriodDivisions    controllers.DSController.refPeriodDivisi
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /gidsapi/assets/*file           controllers.Assets.versioned(path="/public", file: Asset)
+GET     /gidsapi/gidsapi/assets/*file           controllers.Assets.versioned(path="/public", file: Asset)
