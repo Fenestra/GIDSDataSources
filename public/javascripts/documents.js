@@ -18,7 +18,7 @@ function renderDocFunction(resp) {
 }
 */
 function renderDoc() {
-  console.log("renderDoc called for "+lastDocID)
+  console.log("renderDoc called for "+lastDocID);
   showWaitPage("Please wait for the server to respond...");
 //  getFromHttp("GET", "/gidsapi/docs/render/"+lastDocID, renderDocFunction);
   window.location.assign("/gidsapi/showDoc/"+lastDocID);
@@ -41,7 +41,7 @@ function docsByRefDivFunction(resp) {
         "</tr>";
   }
    $('#tablebody').html(someHTML);
-   lastDocID = docs[0].id
+   lastDocID = docs[0].id;
 }
 
 function refSelected(ref) {
