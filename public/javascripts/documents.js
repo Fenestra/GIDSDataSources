@@ -46,7 +46,7 @@ function docsByRefDivFunction(resp) {
 
 function refSelected(ref) {
   showWaitPage("Please wait for the server to respond...");
-  getFromHttp("GET", "gidsapi/docs/"+ref, docsByRefDivFunction);
+  getFromHttp("GET", "/gidsapi/docs/"+ref, docsByRefDivFunction);
   console.log("selected "+ref);
 }
 
