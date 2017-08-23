@@ -11,6 +11,8 @@ function getFromHttp(verb, url, respFunction) {
              showJsonErrorPage(xmlhttp.responseText);
           respFunction(xmlhttp.responseText);
       }
+      if (xmlhttp.readyState == 4 && xmlhttp.status != 200)
+        showErrorPage(xmlhttp.responseText);
    }
    xmlhttp.open(verb, url, true);
    xmlhttp.send();
