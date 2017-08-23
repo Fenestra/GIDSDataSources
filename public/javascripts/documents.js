@@ -28,16 +28,18 @@ function renderDoc() {
 function docsByRefDivFunction(resp) {
   closeWaitPage();
   console.log("resp processed");
+//  var tblheader = "<tr> <th>ID</th> <th>Doc Type</th> <th>Doc Number</th> <th>Description</th> </tr>";
+//  $('#tableheader').html(tblheader);
   someHTML = "<tr onclick='docSelected(this)' class='info'>";
   docs = JSON.parse(resp);
   for (i in docs) {
      if (i > 0)
        someHTML = someHTML + "<tr onclick='docSelected(this)'>";
      someHTML = someHTML +
-        "<td>" + docs[i].id + "</td>"+
-        "<td>" + docs[i].docType + "</td>"+
-        "<td>" + docs[i].docNumber + "</td>"+
-        "<td>" + docs[i].description + "</td>"+
+        "<td class='col-xs-4'>" + docs[i].id + "</td>"+
+        "<td class='col-xs-2'>" + docs[i].docType + "</td>"+
+        "<td class='col-xs-2'>" + docs[i].docNumber + "</td>"+
+        "<td class='col-xs-4'>" + docs[i].description + "</td>"+
         "</tr>";
   }
    $('#tablebody').html(someHTML);
