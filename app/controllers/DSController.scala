@@ -85,8 +85,8 @@ class DSController @Inject() extends Controller {
     Document.byRefDivAsString(refdiv).map(info => Ok(info))
   }
 
-  def renderDocument(id : String) = Action.async {
-    Document.renderSfo(id).map(info => Ok("/gidsapi/assets/images/"+info))
+  def svgImage(id : String) = Action.async {
+    Document.svgForID(id).map(info => Ok(info))
   }
 
 }

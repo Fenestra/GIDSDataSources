@@ -16,8 +16,8 @@ GET     /gidsapi/fdps/metadata/:id      controllers.HomeController.fdpMetadata(i
 # Documents
 GET     /gidsapi/docPage                controllers.DocController.documentHome
 GET     /gidsapi/showDoc/:id            controllers.DocController.showDocument(id)
-GET     /gidsapi/docs/render/:id        controllers.DSController.renderDocument(id)
 GET     /gidsapi/docs/:refdiv           controllers.DSController.documentsByRefDiv(refdiv)
+GET     /gidsapi/svg/:id                controllers.DSController.svgImage(id)
 
 # these routes are restricted access and only available behind the firewall
 # API
@@ -34,4 +34,3 @@ GET     /api/docs/refPeriodDivisions    controllers.DSController.refPeriodDivisi
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /gidsapi/assets/*file           controllers.Assets.versioned(path="/public", file: Asset)
-GET     /gidsapi/gidsapi/assets/*file           controllers.Assets.versioned(path="/public", file: Asset)
