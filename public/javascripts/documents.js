@@ -3,10 +3,9 @@ var docs = [ {id: "someID", docType: "Letter", docNumber: "MA-10000L", descripti
 var lastDocID = "";
 
 function docSelected(aTr) {
-    nextSelected = aTr.rowIndex - 1;
+    nextSelected = aTr.rowIndex;
     lastDocID = docs[nextSelected].id
     console.log("Row index is: " + aTr.rowIndex + " "+ lastDocID );
- //  $('#tablebody').html(someHTML);
     $(aTr).parent().children().removeClass("info");
     $(aTr).addClass("info");
 }
@@ -28,8 +27,7 @@ function renderDoc() {
 function docsByRefDivFunction(resp) {
   closeWaitPage();
   console.log("resp processed");
-//  var tblheader = "<tr> <th>ID</th> <th>Doc Type</th> <th>Doc Number</th> <th>Description</th> </tr>";
-//  $('#tableheader').html(tblheader);
+  var tblheader = "<tr> <th class='col-xs-4'>ID</th> <th class='col-xs-2'>Doc Type</th> <th class='col-xs-2'>Doc Number</th> <th class='col-xs-4'>Description</th> </tr>";
   someHTML = "<tr onclick='docSelected(this)' class='info'>";
   docs = JSON.parse(resp);
   for (i in docs) {
@@ -43,6 +41,7 @@ function docsByRefDivFunction(resp) {
         "</tr>";
   }
    $('#tablebody').html(someHTML);
+   $('#tableheader').html(tblheader);
    lastDocID = docs[0].id;
 }
 
