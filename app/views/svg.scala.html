@@ -30,23 +30,19 @@
 <br>
 
 <hr/>
-<div style="background-color:lightgrey;">
-  <div id="svg" style="padding: 20px;">
-        No image is loaded
-  </div>
-
+<div id="renderpane" style="height:11in;background-color:lightgrey;">
+    <object id="pdf" width="100%" height="100%" style="padding: 20px;" data="">No PDF is loaded</object>
 </div>
 
 
 <script>
 
-function readSvg(resp) {
-  document.getElementById("svg").innerHTML = resp;
-};
-
 function pageNav(url) {
   console.log("pageNav got url of "+url);
-  getFromHttp("GET", "/gidsapi/svg/"+url, readSvg);
+  document.getElementById("pdf").data = "/gidsapi/pdf/"+url;
+  container = document.getElementById("renderpane");
+  cont = container.innerHTML;
+  container.innerHTML = cont;
 };
 
 document.addEventListener("DOMContentLoaded", function() {

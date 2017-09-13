@@ -1,12 +1,12 @@
 package controllers
 
 import javax.inject._
-import com.westat.CustomContent
 import com.westat.sfo.SFOReader
 import models._
 import play.api._
 import play.api.mvc._
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -38,7 +38,6 @@ class DSController @Inject() extends Controller {
 
   def loadQuestionItems(id : String) = Action.async {
         println(s"loadQuestionItems for $id")
-    CustomContent.loadTest
     QuestionItem.questionItemsAsJson(id).map(info =>
       Ok(info)
     )
@@ -78,15 +77,6 @@ class DSController @Inject() extends Controller {
   def refPeriodDivisions = Action.async {
     // array of id:123..., refPeriod:"2002 CENSUS", division:"General"
     RefPeriodDivision.refPeriodDivisionsAsString.map(info => Ok(info))
-  }
-
-  def documentsByRefDiv(refdiv : String) = Action.async {
-    // array of id:123..., refPeriod:"2002 CENSUS", division:"General"
-    Document.byRefDivAsString(refdiv).map(info => Ok(info))
-  }
-
-  def svgImage(id : String) = Action.async {
-    Document.svgForID(id).map(info => Ok(info))
   }
 
 }

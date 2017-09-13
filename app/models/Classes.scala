@@ -1,7 +1,7 @@
 package models
 
 import com.westat.sfo.{SFOReader, ElementCounter}
-import com.westat.{MemoryCache, StringUtilities}
+import com.westat.{SVGRenderResult, MemoryCache, StringUtilities}
 import play.api.Logger
 import play.api.libs.json.Json
 
@@ -337,6 +337,7 @@ object Document {
   implicit val documentReads = Json.reads[Document]
   implicit val documentWrites = Json.writes[Document]
   private val docCache = MemoryCache.svgCache
+  private val pdfCache = MemoryCache.pdfCache
   private val counter = ElementCounter()
 
   def byRefDiv(refPeriod : String, division : String) : List[Document] = {
@@ -352,7 +353,7 @@ object Document {
   }
 
   def sfo(id : String) : String = {
-   println(s"sfo for $id")
+//   println(s"sfo for $id")
     val result = QuiDB().sfoById(id)
     if (result == null)
       return "no sfo was found"
@@ -362,10 +363,10 @@ object Document {
 
   def renderSfo(id : String) : Future[List[String]] = {
     val sfoText = sfo(id)
-
+//       StringUtilities.writeFile(id+".sfo", sfoText)
     val reader = SFOReader(sfoText)
-    reader.readAll
-    println(reader.readChildren(counter))
+//    reader.readAll
+//    println(reader.readChildren(counter))
     Future(reader.writeSVGs(id))
   }
 
@@ -375,6 +376,18 @@ object Document {
       case None => Future(s"No SVG found matching id: $id.")
     }
   }
+
+  def pdfForID(id : String) : Future[SVGRenderResult] = { //Future[Array[Byte]] = {
+    pdfCache.find(id) match {
+      case Some(contents) => Future(SVGRenderResult(null, contents))
+      case None =>  docCache.find(id) match {
+        case Some(svg) => Future(SVGRenderResult(svg, null))
+        case None => Future(SVGRenderResult(s"No SVG found matching id: $id", null))
+      }
+        //Future(s"No PDF found matching id: $id.".getBytes)
+    }
+  }
+
   /*
     make another html paqe with list of refs and divisions
     list of docs

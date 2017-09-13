@@ -16,8 +16,11 @@ GET     /gidsapi/fdps/metadata/:id      controllers.HomeController.fdpMetadata(i
 # Documents
 GET     /gidsapi/docPage                controllers.DocController.documentHome
 GET     /gidsapi/showDoc/:id            controllers.DocController.showDocument(id)
-GET     /gidsapi/docs/:refdiv           controllers.DSController.documentsByRefDiv(refdiv)
-GET     /gidsapi/svg/:id                controllers.DSController.svgImage(id)
+GET     /gidsapi/docs/:refdiv           controllers.DocController.documentsByRefDiv(refdiv)
+GET     /gidsapi/svg/:id                controllers.DocController.svgImage(id)
+GET     /gidsapi/pdf/:id                controllers.DocController.pdfImage(id)
+GET     /gidsapi/pagebuilder            controllers.DocController.pageBuilder
+PUT     /gidsapi/renderLayout           controllers.DocController.renderLayout
 
 # these routes are restricted access and only available behind the firewall
 # API
